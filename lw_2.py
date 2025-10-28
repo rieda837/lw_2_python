@@ -1,5 +1,6 @@
 import csv
 import random
+from os import write
 
 'task 1'
 
@@ -43,7 +44,28 @@ import random
 
 'task 3'
 
+# answ = []
+# with open('books.csv') as f:
+#     s = list(csv.reader(f, delimiter=';'))
+#     for _ in range(20):
+#         row = random.choice(s)
+#         answ.append(row)
+# f = open('lw_2_task3.txt', 'w', encoding='utf-8')
+# for index, el in enumerate(answ, start=1):
+#     f.write(f'{index} {el[3]}. {el[1]} - {el[6].split()[0].split('.')[-1]}')
+#     f.write('\n')
+# f.close()
+
+answ = []
 with open('books.csv') as f:
     s = list(csv.DictReader(f, delimiter=';'))
+    for _ in range(20):
+        row = random.choice(s)
+        answ.append(row)
+f = open('lw_2_task3.txt', 'w', encoding='utf-8')
+for index, el in enumerate(answ, start=1):
+    f.write(f'{index} {el['Автор']}. {el['Название']} - {el['Дата поступления'].split()[0].split('.')[-1]}')
+    f.write('\n')
+f.close()
 
-print(s)
+'task 4'
